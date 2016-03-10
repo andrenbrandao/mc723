@@ -126,6 +126,7 @@ Modificamos então o código, paralelizando a função **for** que faz as chamad
 O tempo de execução do programa passa a ser:
 
 *gcc -fopenmp -O3 primo2.c -o primo2*
+
 *./primo2 105337*
 
 
