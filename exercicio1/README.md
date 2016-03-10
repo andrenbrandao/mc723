@@ -2,9 +2,12 @@
 # Exercício 1
 
 Até antes do "gprof", a máquina utilizada foi:
-MacBook Pro
-2.6 GHz Intel Core i5
-8 GB 1600 MHz DDR3
+
+    MacBook Pro
+    2.6 GHz Intel Core i5
+    8 GB 1600 MHz DDR3
+
+Após o "gprof", foram utilizadas as máquinas do IC.
 
 ## Parte 1
 
@@ -93,4 +96,43 @@ Novamente, podemos tomar que há um aumento de tempo de execução ao compilarmo
         user	0m0.766s
         sys	0m0.004s
 
-Notamos que com a modificação do código para varrer apenas número ímpares, obtemos aproxidamente a metade do tempo de execução anterior.
+ Notamos que com a modificação do código para varrer apenas número ímpares, obtemos aproxidamente a metade do tempo de execução anterior.
+
+2. Utilizamos o gprof em uma máquina Linux do IC, retornando o seguinte resultado com a otimização -O1:
+
+        index % time    self  children    called     name
+                        0.67    0.00  105337/105337  main [2]
+        [1]    100.0    0.67    0.00  105337         primo [1]
+        -----------------------------------------------
+                                                     <spontaneous>
+        [2]    100.0    0.00    0.67                     main [2]
+                        0.67    0.00  105337/105337      primo [1]
+        -----------------------------------------------
+
+ Assim, chegamos à conclusão de que a função primo foi chamada *n vezes*, tomando a maior parte do tempo do programa, sendo assim, um alvo necessário de otimização.
+ 
+## Parte 5 (pasta parte5)
+
+Já que notamos que as chamadas à função primo estão tomando a maior parte do tempo do programa, elas serão nossas candidatas à paralelização.
+
+Modificamos então o código, paralelizando a função **for** que faz as chamadas de primo().
+
+    #pragma omp parallel for private(i) schedule(dynamic) reduction(+:count)
+    for(i = 1; i <= n; i ++) {
+      if(primo(i))
+        count++;
+    }
+
+O tempo de execução do programa passa a ser:
+
+*gcc -fopenmp -O3 primo2.c -o primo2*
+*./primo2 105337*
+
+
+    real	0m0.202s
+    user	0m0.780s
+    sys	0m0.002s
+
+Notamos assim, uma melhora bastante significativa com a paralelização. O que era esperado, já que o cálculo dos primos foi realizado em paralelo, diminuindo o tempo necessário para execução.
+
+Para melhorarmos ainda mais o desempenho do programa poderíamos tentar encontrar algoritmos mais eficientes.
