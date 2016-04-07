@@ -1,0 +1,50 @@
+Associatividade:1
+Tamanho Cache L1:8K
+Tamanho Cache L2:128 K
+Tamanho Bloco:32
+
+  Demand miss rate	      0.4960	      0.4717	      0.4968	      0.9250	      0.0363	      0.0000
+
+
+Associatividade:1
+Tamanho Cache L1:8K
+Tamanho Cache L2:256 K
+Tamanho Bloco:32
+
+  Demand miss rate	      0.4931	      0.4694	      0.4939	      0.9205	      0.0351	      0.0000
+
+
+Associatividade:1
+Tamanho Cache L1:8K
+Tamanho Cache L2:512 K
+Tamanho Bloco:32
+
+  Demand miss rate	      0.0807	      0.4640	      0.0680	      0.1102	      0.0226	      0.0000
+
+
+Associatividade:1
+Tamanho Cache L1:8K
+Tamanho Cache L2:1024 K
+Tamanho Bloco:32
+
+  Demand miss rate	      0.0159	      0.0588	      0.0145	      0.0274	      0.0006	      0.0000
+
+
+Associatividade:1
+Tamanho Cache L1:8K
+Tamanho Cache L2:2048 K
+Tamanho Bloco:32
+
+  Demand miss rate	      0.0121	      0.0278	      0.0116	      0.0219	      0.0005	      0.0000
+
+
+Associatividade:1
+Tamanho Cache L1:8K
+Tamanho Cache L2:4096 K
+Tamanho Bloco:32
+
+  Demand miss rate	      0.0094	      0.0036	      0.0096	      0.0182	      0.0003	      0.0000
+
+ESCOLHEMOS A DE 1024K
+
+
